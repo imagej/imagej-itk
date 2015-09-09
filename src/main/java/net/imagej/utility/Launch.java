@@ -1,5 +1,5 @@
 
-package net.imagej.itk;
+package net.imagej.utility;
 
 /**
  * Launch ImageJ for debuggin
