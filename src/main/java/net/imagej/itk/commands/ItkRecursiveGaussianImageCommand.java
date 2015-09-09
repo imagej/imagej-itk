@@ -9,7 +9,7 @@ import org.scijava.plugin.Plugin;
 
 import net.imagej.Dataset;
 import net.imagej.DatasetService;
-import net.imagej.itk.ImageJSimpleItkService;
+import net.imagej.itk.ImageJItkService;
 import net.imagej.itk.ops.RecursiveGaussian;
 import net.imagej.ops.OpService;
 import net.imglib2.img.Img;
@@ -30,7 +30,7 @@ public class ItkRecursiveGaussianImageCommand<T extends RealType<T> & NativeType
 {
 
 	@Parameter
-	private ImageJSimpleItkService ijitkService;
+	private ImageJItkService ijitkService;
 
 	@Parameter
 	protected DatasetService data;
