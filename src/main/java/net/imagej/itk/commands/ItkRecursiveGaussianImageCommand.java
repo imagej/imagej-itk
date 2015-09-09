@@ -1,6 +1,7 @@
 
 package net.imagej.itk.commands;
 
+import org.itk.simple.Image;
 import org.scijava.ItemIO;
 import org.scijava.command.Command;
 import org.scijava.plugin.Parameter;
@@ -8,6 +9,7 @@ import org.scijava.plugin.Plugin;
 
 import net.imagej.Dataset;
 import net.imagej.DatasetService;
+import net.imagej.itk.ImageJSimpleItkService;
 import net.imagej.itk.ops.RecursiveGaussian;
 import net.imagej.ops.OpService;
 import net.imglib2.img.Img;
@@ -26,6 +28,8 @@ import net.imglib2.type.numeric.RealType;
 public class ItkRecursiveGaussianImageCommand<T extends RealType<T> & NativeType<T>>
 	implements Command
 {
+	@Parameter
+	private ImageJSimpleItkService ijitkService;
 
 	@Parameter
 	protected DatasetService data;
@@ -34,7 +38,7 @@ public class ItkRecursiveGaussianImageCommand<T extends RealType<T> & NativeType
 	protected OpService ops;
 
 	@Parameter
-	protected Dataset input;
+	protected Image input;
 
 	@Parameter
 	protected float sigma = 3.0f;
@@ -43,13 +47,11 @@ public class ItkRecursiveGaussianImageCommand<T extends RealType<T> & NativeType
 	protected Dataset output;
 
 	public void run() {
-		// get the Imgs from the dataset
-		Img<T> imgIn = (Img<T>) input.getImgPlus().getImg();
 
 		// call the op
-		Img<T> imgOut = (Img<T>) (ops.run(RecursiveGaussian.NAME, imgIn, sigma));
+		Image image = (Image) ops.run(RecursiveGaussian.NAME, input, sigma);
 
-		output = data.create(new ImgPlus(imgOut));
+		output = ijitkService.getDataset(image);
 	}
 
 }
