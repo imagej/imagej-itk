@@ -36,22 +36,11 @@ public class ItkRecursiveGaussianImageOp<T extends RealType<T>, S extends RealTy
 
 	public void run() {
 
-		// convert input to itk Images
-		// Image itkImage = SimpleItkImagejUtilities.simple3DITKImageFromInterval(
-		// input);
-		// org.itk.simple.RecursiveGaussianImageFilter.
-
 		org.itk.simple.SmoothingRecursiveGaussianImageFilter itkGauss =
 			new org.itk.simple.SmoothingRecursiveGaussianImageFilter();
 
 		// call itk rl using simple itk wrapper
 		output = itkGauss.execute(itkImage, sigma, false);
-
-		/*T inputType = Util.getTypeFromInterval();
-		
-		// convert output to ImageJ Img
-		output = SimpleItkImagejUtilities.simple3DITKImageToImg(out, input
-			.factory(), inputType);*/
 
 	}
 }
