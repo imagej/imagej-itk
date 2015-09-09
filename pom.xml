@@ -16,12 +16,22 @@
   	<packaging>jar</packaging>
   	<name>imagej-itk-example</name>
   	<version>1.0.0-SNAPSHOT</version>
+
+		<properties>
+			<simpleitk.version>0.9.0</simpleitk.version>
+		</properties>
   
   	<dependencies>
  	
  		<dependency>
  			<groupId>net.imagej</groupId>
 			<artifactId>imagej</artifactId>
+		</dependency>
+
+ 		<dependency>
+ 			<groupId>org.itk.simple</groupId>
+			<artifactId>simpleitk</artifactId>
+			<version>${simpleitk.version}</version>
 		</dependency>
 	
 	<!-- Testing scope -->
