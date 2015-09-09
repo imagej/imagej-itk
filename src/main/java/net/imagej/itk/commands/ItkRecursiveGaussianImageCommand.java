@@ -12,8 +12,6 @@ import net.imagej.DatasetService;
 import net.imagej.itk.ImageJItkService;
 import net.imagej.itk.ops.RecursiveGaussian;
 import net.imagej.ops.OpService;
-import net.imglib2.img.Img;
-import net.imglib2.meta.ImgPlus;
 import net.imglib2.type.NativeType;
 import net.imglib2.type.numeric.RealType;
 
