@@ -12,23 +12,40 @@
 		<relativePath />
 	</parent>
   
-  	<artifactId>imagej-itk-example</artifactId>
-  	<packaging>jar</packaging>
-  	<name>imagej-itk-example</name>
-  	<version>1.0.0-SNAPSHOT</version>
+	<artifactId>imagej-itk</artifactId>
+	<packaging>jar</packaging>
+	<name>imagej-itk</name>
+	<version>0.1.0-SNAPSHOT</version>
 
-		<properties>
-			<simpleitk.version>0.9.0</simpleitk.version>
-		</properties>
+	<properties>
+		<simpleitk.version>0.9.0</simpleitk.version>
+	</properties>
+
+	<scm>
+		<connection>scm:git:git://github.com/imagej/imagej-itk</connection>
+		<developerConnection>scm:git:git@github.com:imagej/imagej-itk</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/imagej/imagej-itk</url>
+	</scm>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/imagej/imagej-itk/issues</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>http://jenkins.imagej.net/job/ImageJ-ITK/</url>
+	</ciManagement>
   
-  	<dependencies>
+	<dependencies>
  	
- 		<dependency>
- 			<groupId>net.imagej</groupId>
+		<dependency>
+			<groupId>net.imagej</groupId>
 			<artifactId>imagej</artifactId>
 		</dependency>
 
- 		<dependency>
+		<dependency>
  			<groupId>org.itk.simple</groupId>
 			<artifactId>simpleitk</artifactId>
 			<version>${simpleitk.version}</version>
@@ -42,9 +59,9 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
- 	</dependencies>
+	</dependencies>
  
- 	<repositories>
+	<repositories>
 		<repository>
 			<id>imagej.public</id>
 			<url>http://maven.imagej.net/content/groups/public</url>
