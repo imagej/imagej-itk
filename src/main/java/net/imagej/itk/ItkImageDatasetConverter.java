@@ -53,7 +53,7 @@ public class ItkImageDatasetConverter extends
 {
 
 	@Parameter
-	private ImageJSimpleItkService ijitkService;
+	private ImageJItkService ijitkService;
 
 	@Parameter
 	private ObjectService objectService;

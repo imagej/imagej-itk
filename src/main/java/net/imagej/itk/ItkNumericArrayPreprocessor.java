@@ -48,7 +48,7 @@ import net.imagej.display.process.SingleInputPreprocessor;
  * @author Mark Hiner, Brian Northan
  */
 @Plugin(type = PreprocessorPlugin.class, priority = Priority.VERY_HIGH_PRIORITY)
-public class SimpleItkNumericArrayPreprocessor extends
+public class ItkNumericArrayPreprocessor extends
 	SingleInputPreprocessor<Image>
 {
 
@@ -56,9 +56,9 @@ public class SimpleItkNumericArrayPreprocessor extends
 	private ImageDisplayService imageDisplayService;
 
 	@Parameter(required = false)
-	private ImageJSimpleItkService ijitkService;
+	private ImageJItkService ijitkService;
 
-	public SimpleItkNumericArrayPreprocessor() {
+	public ItkNumericArrayPreprocessor() {
 		super(Image.class);
 	}
 
