@@ -32,15 +32,14 @@
 package net.imagej.itk;
 
 import org.itk.simple.Image;
-import net.imagej.Dataset;
-import net.imagej.display.ImageDisplayService;
-import net.imagej.display.process.SingleInputPreprocessor;
-import net.imglib2.RandomAccessibleInterval;
-
 import org.scijava.Priority;
 import org.scijava.module.process.PreprocessorPlugin;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
+
+import net.imagej.Dataset;
+import net.imagej.display.ImageDisplayService;
+import net.imagej.display.process.SingleInputPreprocessor;
 
 /**
  * {@link PreprocessorPlugin} implementation that converts the active
@@ -49,7 +48,9 @@ import org.scijava.plugin.Plugin;
  * @author Mark Hiner, Brian Northan
  */
 @Plugin(type = PreprocessorPlugin.class, priority = Priority.VERY_HIGH_PRIORITY)
-public class SimpleItkNumericArrayPreprocessor extends SingleInputPreprocessor<Image> {
+public class SimpleItkNumericArrayPreprocessor extends
+	SingleInputPreprocessor<Image>
+{
 
 	@Parameter(required = false)
 	private ImageDisplayService imageDisplayService;

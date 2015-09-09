@@ -1,19 +1,14 @@
 
 package net.imagej.itk.ops;
 
-import net.imagej.ops.Op;
-import net.imglib2.img.Img;
-import net.imglib2.type.numeric.RealType;
-import net.imglib2.util.Util;
-
 import org.itk.simple.Image;
-import org.itk.simple.RichardsonLucyDeconvolutionImageFilter;
-import org.itk.simple.RichardsonLucyDeconvolutionImageFilter.BoundaryConditionType;
-import org.scijava.plugin.Parameter;
-import org.scijava.plugin.Plugin;
 import org.scijava.ItemIO;
 import org.scijava.Priority;
+import org.scijava.plugin.Parameter;
+import org.scijava.plugin.Plugin;
 
+import net.imagej.ops.Op;
+import net.imglib2.type.numeric.RealType;
 
 /**
  * An op that wraps the itk implementation of Recursive Gaussian Filter
@@ -42,8 +37,8 @@ public class ItkRecursiveGaussianImageOp<T extends RealType<T>, S extends RealTy
 	public void run() {
 
 		// convert input to itk Images
-		//Image itkImage = SimpleItkImagejUtilities.simple3DITKImageFromInterval(
-		//	input);
+		// Image itkImage = SimpleItkImagejUtilities.simple3DITKImageFromInterval(
+		// input);
 		// org.itk.simple.RecursiveGaussianImageFilter.
 
 		org.itk.simple.SmoothingRecursiveGaussianImageFilter itkGauss =
@@ -53,7 +48,7 @@ public class ItkRecursiveGaussianImageOp<T extends RealType<T>, S extends RealTy
 		output = itkGauss.execute(itkImage, sigma, false);
 
 		/*T inputType = Util.getTypeFromInterval();
-
+		
 		// convert output to ImageJ Img
 		output = SimpleItkImagejUtilities.simple3DITKImageToImg(out, input
 			.factory(), inputType);*/

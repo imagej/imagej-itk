@@ -28,6 +28,7 @@ import net.imglib2.type.numeric.RealType;
 public class ItkRecursiveGaussianImageCommand<T extends RealType<T> & NativeType<T>>
 	implements Command
 {
+
 	@Parameter
 	private ImageJSimpleItkService ijitkService;
 

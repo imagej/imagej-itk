@@ -62,7 +62,7 @@ public class DatasetItkImageConverter extends
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T convert(final Object src, final Class<T> dest) {
-		return (T) ijitkService.getDataset((Image)src);
+		return (T) ijitkService.getDataset((Image) src);
 	}
 
 	@Override
