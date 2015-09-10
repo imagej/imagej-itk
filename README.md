@@ -1,7 +1,7 @@
 # imagej-itk
 
 This is a work in progress repository that demostrates how to expose [Insight
-Toolkit](http://itk.org) functionality to [ImageJ2](http://imagej.net)](http://imagej.net).
+Toolkit](http://itk.org) functionality to [ImageJ2](http://imagej.net).
 
 Currently, the repository demonstrates how to expose a few
 [SimpleITK](http://simpleitk.org) filters as [ImgLib2](http://imglib2.net/)
