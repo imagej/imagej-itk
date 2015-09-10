@@ -36,6 +36,7 @@ import org.itk.simple.VectorUInt32;
 import org.scijava.log.LogService;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
+import org.scijava.script.ScriptService;
 import org.scijava.service.AbstractService;
 import org.scijava.service.Service;
 
@@ -60,6 +61,9 @@ public class DefaultImageJItkService extends AbstractService implements
 {
 
 	@Parameter
+	private ScriptService scriptService;
+
+	@Parameter
 	private DatasetService datasetService;
 
 	@Parameter
@@ -81,6 +85,9 @@ public class DefaultImageJItkService extends AbstractService implements
 	public void initialize() {
 		// Try to load the native SimpleITK library from java.library.path
 		System.loadLibrary("SimpleITKJava");
+
+		// Register known data type aliases for use in script @parameters
+		scriptService.addAlias("itkImage", Image.class);
 	}
 
 	// -- Helper methods: to array --
