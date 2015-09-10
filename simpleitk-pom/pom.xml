@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.itk.simple</groupId>
+  <artifactId>simpleitk</artifactId>
+  <version>0.9.0</version>
+
+  <description>Fabricated POM for auto-generated SimpleITK Java bindings</description>
+
+	<issueManagement>
+		<system>Jira</system>
+		<url>https://issues.itk.org/jira/browse/SIMPLEITK</url>
+	</issueManagement>
+
+	<repositories>
+		<repository>
+			<id>imagej.public</id>
+			<url>http://maven.imagej.net/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<developers>
+		<developer>
+			<id>mmccormick</id>
+			<name>Matthew McCormick</name>
+			<email>matthew.mccormick@kitware.com</email>
+			<url>http://www.kitware.com/company/team/mccormick.html</url>
+			<organization>Kitware</organization>
+			<organizationUrl>http://www.kitware.com/</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>-5</timezone>
+		</developer>
+		<developer>
+			<id>bnorthan</id>
+			<name>Brian Northan</name>
+			<email>bnorthan@gmail.com</email>
+			<url>www.linkedin.com/pub/brian-northan/6/860/3a7</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>hinerm</id>
+			<name>Mark Hiner</name>
+			<email>hiner@wisc.edu</email>
+			<url>http://developer.imagej.net/users/hinerm</url>
+			<organization>UW-Madison LOCI</organization>
+			<organizationUrl>http://loci.wisc.edu/</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>-6</timezone>
+		</developer>
+	</developers>
+</project>
