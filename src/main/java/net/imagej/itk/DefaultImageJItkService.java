@@ -33,6 +33,7 @@ package net.imagej.itk;
 
 import org.itk.simple.Image;
 import org.itk.simple.VectorUInt32;
+import org.scijava.log.LogService;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 import org.scijava.service.AbstractService;
@@ -61,6 +62,9 @@ public class DefaultImageJItkService extends AbstractService implements
 	@Parameter
 	private DatasetService datasetService;
 
+	@Parameter
+	private LogService logService;
+
 	@Override
 	public Image getImage(final Dataset dataset) {
 		return convertToImage(dataset);
@@ -69,6 +73,14 @@ public class DefaultImageJItkService extends AbstractService implements
 	@Override
 	public Dataset getDataset(final Image image) {
 		return convertToDataset(image);
+	}
+
+	// -- Service methods --
+
+	@Override
+	public void initialize() {
+		// Try to load the native SimpleITK library from java.library.path
+		System.loadLibrary("SimpleITKJava");
 	}
 
 	// -- Helper methods: to array --
