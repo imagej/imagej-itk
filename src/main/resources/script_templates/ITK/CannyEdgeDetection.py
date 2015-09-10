@@ -1,4 +1,4 @@
-# @org.itk.simple.Image image
+# @itkImage image
 # @OUTPUT Dataset output
 
 from org.itk.simple import CannyEdgeDetectionImageFilter

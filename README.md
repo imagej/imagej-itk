@@ -33,6 +33,8 @@ output = itkGauss.execute(image, 3.0, False);
 ```
 
 
+## Build Instructions ##
+
 To get started, install [Maven 3](http://maven.apache.org/), and run:
 
 ```
@@ -40,3 +42,7 @@ mvn
 ```
 
 from the repository root directory.
+
+### Bundling Native Libraries ###
+
+You will need to add the `SimpleITKJava` native library appropriate for your operating system and architecture to the `java.library.path`. See the [SimpleITK documentation](http://www.itk.org/Wiki/SimpleITK/GettingStarted#Build_It_Yourself) for information on custom builds.
