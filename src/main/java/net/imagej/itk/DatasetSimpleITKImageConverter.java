@@ -31,16 +31,15 @@
 
 package net.imagej.itk;
 
+import net.imagej.Dataset;
+import net.imagej.DatasetService;
+
 import org.itk.simple.Image;
 import org.scijava.Priority;
 import org.scijava.convert.AbstractConverter;
 import org.scijava.convert.Converter;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
-
-import net.imagej.Dataset;
-import net.imagej.DatasetService;
-import net.imagej.itk.SimpleITKService;
 
 /**
  * {@link Converter} implementation for converting {@link Image} to
