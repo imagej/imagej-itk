@@ -23,7 +23,7 @@ import net.imglib2.type.numeric.RealType;
  * @param <T>
  */
 @Plugin(type = Command.class, menuPath = "Plugins>ITK>ITK Gaussian")
-public class ItkRecursiveGaussianImageCommand<T extends RealType<T> & NativeType<T>>
+public class RecursiveGaussianImageCommand<T extends RealType<T> & NativeType<T>>
 	implements Command
 {
 

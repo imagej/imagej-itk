@@ -19,7 +19,7 @@ import net.imglib2.type.numeric.RealType;
  */
 @Plugin(type = RecursiveGaussian.class, name = RecursiveGaussian.NAME,
 	priority = Priority.HIGH_PRIORITY + 1)
-public class ItkRecursiveGaussianImageOp<T extends RealType<T>, S extends RealType<S>>
+public class RecursiveGaussianImageOp<T extends RealType<T>, S extends RealType<S>>
 	implements Op
 {
 
