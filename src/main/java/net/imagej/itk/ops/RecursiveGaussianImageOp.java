@@ -31,18 +31,18 @@
 
 package net.imagej.itk.ops;
 
+import net.imagej.ops.Op;
+import net.imglib2.type.numeric.RealType;
+
 import org.itk.simple.Image;
 import org.scijava.ItemIO;
 import org.scijava.Priority;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
-import net.imagej.ops.Op;
-import net.imglib2.type.numeric.RealType;
-
 /**
  * An op that wraps the itk implementation of Recursive Gaussian Filter
- * 
+ *
  * @author bnorthan
  * @param <T>
  * @param <S>
@@ -64,9 +64,10 @@ public class RecursiveGaussianImageOp<T extends RealType<T>, S extends RealType<
 
 	org.itk.simple.RecursiveGaussianImageFilter itkGauss;
 
+	@Override
 	public void run() {
 
-		org.itk.simple.SmoothingRecursiveGaussianImageFilter itkGauss =
+		final org.itk.simple.SmoothingRecursiveGaussianImageFilter itkGauss =
 			new org.itk.simple.SmoothingRecursiveGaussianImageFilter();
 
 		// call itk rl using simple itk wrapper
