@@ -45,16 +45,10 @@ import org.scijava.service.Service;
  */
 public interface SimpleITKService extends ImageJService {
 
-	/**
-	 * Converts a {@link Dataset} to a {@link SimpleItkNumericArray} which can
-	 * then be safely passed to SimpleItk.
-	 */
+	/** Converts a {@link Dataset} to a SimpleITK {@link Image}. */
 	Image getImage(Dataset dataset);
 
-	/**
-	 * Converts a {@link SimpleItkNumericArray} retrieved from SimpleItk to an
-	 * {@link Dataset}.
-	 */
+	/** Converts a SimpleITK {@link Image} to a {@link Dataset}. */
 	Dataset getDataset(Image image);
 
 }
