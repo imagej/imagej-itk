@@ -31,15 +31,6 @@
 
 package net.imagej.itk;
 
-import org.itk.simple.Image;
-import org.itk.simple.VectorUInt32;
-import org.scijava.log.LogService;
-import org.scijava.plugin.Parameter;
-import org.scijava.plugin.Plugin;
-import org.scijava.script.ScriptService;
-import org.scijava.service.AbstractService;
-import org.scijava.service.Service;
-
 import net.imagej.Dataset;
 import net.imagej.DatasetService;
 import net.imagej.axis.Axes;
@@ -49,6 +40,15 @@ import net.imglib2.img.Img;
 import net.imglib2.iterator.LocalizingZeroMinIntervalIterator;
 import net.imglib2.type.numeric.RealType;
 import net.imglib2.type.numeric.real.FloatType;
+
+import org.itk.simple.Image;
+import org.itk.simple.VectorUInt32;
+import org.scijava.log.LogService;
+import org.scijava.plugin.Parameter;
+import org.scijava.plugin.Plugin;
+import org.scijava.script.ScriptService;
+import org.scijava.service.AbstractService;
+import org.scijava.service.Service;
 
 /**
  * Default {@link SimpleITKService} implementation.
@@ -71,22 +71,22 @@ public class DefaultSimpleITKService extends AbstractService implements
 
 	@Override
 	public Image getImage(final Dataset dataset) {
-		int numDimensions = dataset.numDimensions();
+		final int numDimensions = dataset.numDimensions();
 
-		VectorUInt32 itkDimensions = new VectorUInt32(numDimensions);
+		final VectorUInt32 itkDimensions = new VectorUInt32(numDimensions);
 
 		for (int i = 0; i < numDimensions; i++) {
 			itkDimensions.set(i, dataset.dimension(i));
 		}
 
-		Image image = new Image(itkDimensions,
-			org.itk.simple.PixelIDValueEnum.sitkFloat32);
+		final Image image =
+			new Image(itkDimensions, org.itk.simple.PixelIDValueEnum.sitkFloat32);
 
-		LocalizingZeroMinIntervalIterator i = new LocalizingZeroMinIntervalIterator(
-			dataset);
-		RandomAccess<RealType<?>> s = dataset.randomAccess();
+		final LocalizingZeroMinIntervalIterator i =
+			new LocalizingZeroMinIntervalIterator(dataset);
+		final RandomAccess<RealType<?>> s = dataset.randomAccess();
 
-		VectorUInt32 index = new VectorUInt32(numDimensions);
+		final VectorUInt32 index = new VectorUInt32(numDimensions);
 
 		while (i.hasNext()) {
 			i.fwd();
@@ -96,7 +96,7 @@ public class DefaultSimpleITKService extends AbstractService implements
 				index.set(d, i.getLongPosition(d));
 			}
 
-			float pix = s.get().getRealFloat();
+			final float pix = s.get().getRealFloat();
 
 			image.setPixelAsFloat(index, pix);
 		}
@@ -106,11 +106,11 @@ public class DefaultSimpleITKService extends AbstractService implements
 
 	@Override
 	public Dataset getDataset(final Image image) {
-		VectorUInt32 itkDimensions = image.getSize();
-		int numDimensions = (int) itkDimensions.size();
+		final VectorUInt32 itkDimensions = image.getSize();
+		final int numDimensions = (int) itkDimensions.size();
 
 		// assume 3 dimensions
-		long[] dims = new long[numDimensions];
+		final long[] dims = new long[numDimensions];
 
 		for (int d = 0; d < numDimensions; d++) {
 			dims[d] = itkDimensions.get(d);
@@ -127,18 +127,19 @@ public class DefaultSimpleITKService extends AbstractService implements
 			else axes[i] = Axes.get("Unknown " + (i - 2), false);
 		}
 
-		final Dataset dataset = datasetService.create(new FloatType(), dims, name,
-			axes);
+		final Dataset dataset =
+			datasetService.create(new FloatType(), dims, name, axes);
 
-		Img<FloatType> output = (Img<FloatType>) dataset.getImgPlus().getImg();
+		final Img<FloatType> output =
+			(Img<FloatType>) dataset.getImgPlus().getImg();
 
 		// get an iterator
-		LocalizingZeroMinIntervalIterator i = new LocalizingZeroMinIntervalIterator(
-			output);
+		final LocalizingZeroMinIntervalIterator i =
+			new LocalizingZeroMinIntervalIterator(output);
 
-		RandomAccess<FloatType> s = output.randomAccess();
+		final RandomAccess<FloatType> s = output.randomAccess();
 
-		VectorUInt32 index = new VectorUInt32(3);
+		final VectorUInt32 index = new VectorUInt32(3);
 
 		while (i.hasNext()) {
 			i.fwd();
@@ -148,7 +149,7 @@ public class DefaultSimpleITKService extends AbstractService implements
 				index.set(d, i.getLongPosition(d));
 			}
 
-			float pix = image.getPixelAsFloat(index);
+			final float pix = image.getPixelAsFloat(index);
 
 			s.get().setReal(pix);
 		}
