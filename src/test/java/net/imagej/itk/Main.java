@@ -1,12 +1,12 @@
 
-package net.imagej.utility;
+package net.imagej.itk;
 
 /**
  * Launch ImageJ for debuggin
  * 
  * @author bnorthan
  */
-public class Launch {
+public class Main {
 
 	/** a main that launches imagej for debugging */
 	public static void main(final String... args) throws Exception {
