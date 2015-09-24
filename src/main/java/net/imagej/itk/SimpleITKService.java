@@ -31,10 +31,10 @@
 
 package net.imagej.itk;
 
-import org.itk.simple.Image;
 import net.imagej.Dataset;
 import net.imagej.ImageJService;
 
+import org.itk.simple.Image;
 import org.scijava.service.Service;
 
 /**
@@ -49,11 +49,12 @@ public interface SimpleITKService extends ImageJService {
 	 * Converts a {@link Dataset} to a {@link SimpleItkNumericArray} which can
 	 * then be safely passed to SimpleItk.
 	 */
-		Image getImage(Dataset dataset);
+	Image getImage(Dataset dataset);
 
 	/**
 	 * Converts a {@link SimpleItkNumericArray} retrieved from SimpleItk to an
 	 * {@link Dataset}.
 	 */
-		Dataset getDataset(Image image);
+	Dataset getDataset(Image image);
+
 }
