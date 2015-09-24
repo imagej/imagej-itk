@@ -45,7 +45,8 @@ import org.scijava.plugin.Plugin;
  * {@link PreprocessorPlugin} implementation that converts the active
  * {@link Dataset}s to a SimpleITK {@link Image}.
  *
- * @author Mark Hiner, Brian Northan
+ * @author Mark Hiner
+ * @author Brian Northan
  */
 @Plugin(type = PreprocessorPlugin.class, priority = Priority.VERY_HIGH_PRIORITY)
 public class SimpleITKImagePreprocessor extends SingleInputPreprocessor<Image> {

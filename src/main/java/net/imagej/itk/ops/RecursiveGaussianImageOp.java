@@ -43,7 +43,7 @@ import org.scijava.plugin.Plugin;
 /**
  * An op that wraps the itk implementation of Recursive Gaussian Filter
  *
- * @author bnorthan
+ * @author Brian Northan
  * @param <T>
  * @param <S>
  */

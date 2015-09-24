@@ -41,7 +41,8 @@ import org.scijava.service.Service;
  * {@link Service} for performing utility operations with {@code net.imagej}
  * data structures in a SimpleItk context.
  *
- * @author Mark Hiner, Brian Northan
+ * @author Mark Hiner
+ * @author Brian Northan
  */
 public interface SimpleITKService extends ImageJService {
 

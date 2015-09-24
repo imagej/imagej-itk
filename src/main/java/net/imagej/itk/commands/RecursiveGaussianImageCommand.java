@@ -49,7 +49,7 @@ import org.scijava.plugin.Plugin;
  * A command with parameters and a menu item. The command will be added to the
  * ImageJ menu (under "Plugins", "ITK").
  *
- * @author bnorthan
+ * @author Brian Northan
  * @param <T>
  */
 @Plugin(type = Command.class, menuPath = "Plugins>ITK>ITK Gaussian")
