@@ -43,7 +43,7 @@ import net.imagej.display.process.SingleInputPreprocessor;
 
 /**
  * {@link PreprocessorPlugin} implementation that converts the active
- * {@link Dataset}s to a {@link SimpleItkNumericArray}.
+ * {@link Dataset}s to a SimpleITK {@link Image}.
  *
  * @author Mark Hiner, Brian Northan
  */
