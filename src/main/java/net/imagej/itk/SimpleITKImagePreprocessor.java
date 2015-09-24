@@ -31,15 +31,15 @@
 
 package net.imagej.itk;
 
+import net.imagej.Dataset;
+import net.imagej.display.ImageDisplayService;
+import net.imagej.display.process.SingleInputPreprocessor;
+
 import org.itk.simple.Image;
 import org.scijava.Priority;
 import org.scijava.module.process.PreprocessorPlugin;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
-
-import net.imagej.Dataset;
-import net.imagej.display.ImageDisplayService;
-import net.imagej.display.process.SingleInputPreprocessor;
 
 /**
  * {@link PreprocessorPlugin} implementation that converts the active
@@ -48,9 +48,7 @@ import net.imagej.display.process.SingleInputPreprocessor;
  * @author Mark Hiner, Brian Northan
  */
 @Plugin(type = PreprocessorPlugin.class, priority = Priority.VERY_HIGH_PRIORITY)
-public class SimpleITKImagePreprocessor extends
-	SingleInputPreprocessor<Image>
-{
+public class SimpleITKImagePreprocessor extends SingleInputPreprocessor<Image> {
 
 	@Parameter(required = false)
 	private ImageDisplayService imageDisplayService;
@@ -66,7 +64,7 @@ public class SimpleITKImagePreprocessor extends
 	public Image getValue() {
 		if (imageDisplayService == null || simpleITKService == null) return null;
 		final Dataset activeDataset = imageDisplayService.getActiveDataset();
-		Image image = null;
+		final Image image = null;
 
 		if (activeDataset != null) {
 			// Convert the active dataset to a SimpleItk-compatible array.
