@@ -43,12 +43,12 @@ import net.imagej.Dataset;
 
 /**
  * {@link Converter} implementation for converting {@link Dataset} to
- * {@link Image}.
+ * SimpleITK {@link Image}.
  *
  * @author Mark Hiner, Brian Northan
  */
 @Plugin(type = Converter.class, priority = Priority.LOW_PRIORITY)
-public class ItkImageDatasetConverter extends
+public class SimpleITKImageDatasetConverter extends
 	AbstractConverter<Dataset, Image>
 {
 
