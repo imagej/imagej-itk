@@ -31,6 +31,8 @@
 
 package net.imagej.itk;
 
+import net.imagej.Dataset;
+
 import org.itk.simple.Image;
 import org.scijava.Priority;
 import org.scijava.convert.AbstractConverter;
@@ -39,13 +41,12 @@ import org.scijava.object.ObjectService;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
-import net.imagej.Dataset;
-
 /**
- * {@link Converter} implementation for converting {@link Dataset} to
- * SimpleITK {@link Image}.
+ * {@link Converter} implementation for converting {@link Dataset} to SimpleITK
+ * {@link Image}.
  *
- * @author Mark Hiner, Brian Northan
+ * @author Mark Hiner
+ * @author Brian Northan
  */
 @Plugin(type = Converter.class, priority = Priority.LOW_PRIORITY)
 public class SimpleITKImageDatasetConverter extends
