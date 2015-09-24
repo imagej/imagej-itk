@@ -29,10 +29,11 @@
  * #L%
  */
 
-package net.imagej.itk;
+package net.imagej.itk.convert;
 
 import net.imagej.Dataset;
 import net.imagej.DatasetService;
+import net.imagej.itk.SimpleITKService;
 
 import org.itk.simple.Image;
 import org.scijava.Priority;
