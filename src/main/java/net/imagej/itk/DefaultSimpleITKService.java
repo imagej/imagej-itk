@@ -71,32 +71,6 @@ public class DefaultSimpleITKService extends AbstractService implements
 
 	@Override
 	public Image getImage(final Dataset dataset) {
-		return convertToImage(dataset);
-	}
-
-	@Override
-	public Dataset getDataset(final Image image) {
-		return convertToDataset(image);
-	}
-
-	// -- Service methods --
-
-	@Override
-	public void initialize() {
-		// Try to load the native SimpleITK library from java.library.path
-		System.loadLibrary("SimpleITKJava");
-
-		// Register known data type aliases for use in script @parameters
-		scriptService.addAlias("itkImage", Image.class);
-	}
-
-	// -- Helper methods: to array --
-
-	/**
-	 * Helper method to convert a {@link Dataset} to a
-	 * {@link SimpleItkNumericArray}.
-	 */
-	private Image convertToImage(final Dataset dataset) {
 		int numDimensions = dataset.numDimensions();
 
 		VectorUInt32 itkDimensions = new VectorUInt32(numDimensions);
@@ -130,13 +104,8 @@ public class DefaultSimpleITKService extends AbstractService implements
 		return image;
 	}
 
-	// -- Helper methods: to dataset --
-
-	/**
-	 * Helper method to convert a {@link SimpleItkNumericArray} to a
-	 * {@link Dataset}.
-	 */
-	private Dataset convertToDataset(final Image image) {
+	@Override
+	public Dataset getDataset(final Image image) {
 		VectorUInt32 itkDimensions = image.getSize();
 		int numDimensions = (int) itkDimensions.size();
 
@@ -185,6 +154,17 @@ public class DefaultSimpleITKService extends AbstractService implements
 		}
 
 		return dataset;
+	}
+
+	// -- Service methods --
+
+	@Override
+	public void initialize() {
+		// Try to load the native SimpleITK library from java.library.path
+		System.loadLibrary("SimpleITKJava");
+
+		// Register known data type aliases for use in script @parameters
+		scriptService.addAlias("itkImage", Image.class);
 	}
 
 }
