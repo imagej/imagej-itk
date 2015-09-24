@@ -47,7 +47,7 @@ import net.imagej.itk.SimpleITKService;
  * {@link Dataset}.
  */
 @Plugin(type = Converter.class, priority = Priority.LOW_PRIORITY)
-public class DatasetItkImageConverter extends
+public class DatasetSimpleITKImageConverter extends
 	AbstractConverter<Image, Dataset>
 {
 
