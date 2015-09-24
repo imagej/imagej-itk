@@ -43,7 +43,7 @@ import org.scijava.service.Service;
  *
  * @author Mark Hiner, Brian Northan
  */
-public interface ImageJItkService extends ImageJService {
+public interface SimpleITKService extends ImageJService {
 
 	/**
 	 * Converts a {@link Dataset} to a {@link SimpleItkNumericArray} which can

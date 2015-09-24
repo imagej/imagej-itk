@@ -51,13 +51,13 @@ import net.imglib2.type.numeric.RealType;
 import net.imglib2.type.numeric.real.FloatType;
 
 /**
- * Default {@link ImageJItkService} implementation.
+ * Default {@link SimpleITKService} implementation.
  *
  * @author Mark Hiner
  */
 @Plugin(type = Service.class)
-public class DefaultImageJItkService extends AbstractService implements
-	ImageJItkService
+public class DefaultSimpleITKService extends AbstractService implements
+	SimpleITKService
 {
 
 	@Parameter

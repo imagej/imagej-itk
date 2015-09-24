@@ -56,7 +56,7 @@ public class ItkNumericArrayPreprocessor extends
 	private ImageDisplayService imageDisplayService;
 
 	@Parameter(required = false)
-	private ImageJItkService ijitkService;
+	private SimpleITKService simpleITKService;
 
 	public ItkNumericArrayPreprocessor() {
 		super(Image.class);
@@ -64,13 +64,13 @@ public class ItkNumericArrayPreprocessor extends
 
 	@Override
 	public Image getValue() {
-		if (imageDisplayService == null || ijitkService == null) return null;
+		if (imageDisplayService == null || simpleITKService == null) return null;
 		final Dataset activeDataset = imageDisplayService.getActiveDataset();
 		Image image = null;
 
 		if (activeDataset != null) {
 			// Convert the active dataset to a SimpleItk-compatible array.
-			return ijitkService.getImage(activeDataset);
+			return simpleITKService.getImage(activeDataset);
 		}
 
 		return image;

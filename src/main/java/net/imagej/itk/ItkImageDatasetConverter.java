@@ -53,7 +53,7 @@ public class ItkImageDatasetConverter extends
 {
 
 	@Parameter
-	private ImageJItkService ijitkService;
+	private SimpleITKService simpleITKService;
 
 	@Parameter
 	private ObjectService objectService;
@@ -63,7 +63,7 @@ public class ItkImageDatasetConverter extends
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T convert(final Object src, final Class<T> dest) {
-		return (T) ijitkService.getImage((Dataset) src);
+		return (T) simpleITKService.getImage((Dataset) src);
 	}
 
 	@Override

@@ -40,7 +40,7 @@ import org.scijava.plugin.Plugin;
 
 import net.imagej.Dataset;
 import net.imagej.DatasetService;
-import net.imagej.itk.ImageJItkService;
+import net.imagej.itk.SimpleITKService;
 
 /**
  * {@link Converter} implementation for converting {@link Image} to
@@ -52,7 +52,7 @@ public class DatasetItkImageConverter extends
 {
 
 	@Parameter
-	private ImageJItkService ijitkService;
+	private SimpleITKService simpleITKService;
 
 	@Parameter
 	DatasetService datasetService;
@@ -62,7 +62,7 @@ public class DatasetItkImageConverter extends
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T convert(final Object src, final Class<T> dest) {
-		return (T) ijitkService.getDataset((Image) src);
+		return (T) simpleITKService.getDataset((Image) src);
 	}
 
 	@Override
