@@ -31,48 +31,48 @@
 
 package net.imagej.itk;
 
+import net.imagej.Dataset;
+import net.imagej.display.ImageDisplayService;
+import net.imagej.display.process.SingleInputPreprocessor;
+
 import org.itk.simple.Image;
 import org.scijava.Priority;
-import org.scijava.convert.AbstractConverter;
-import org.scijava.convert.Converter;
-import org.scijava.object.ObjectService;
+import org.scijava.module.process.PreprocessorPlugin;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
-import net.imagej.Dataset;
-
 /**
- * {@link Converter} implementation for converting {@link Dataset} to
- * {@link Image}.
+ * {@link PreprocessorPlugin} implementation that converts the active
+ * {@link Dataset}s to a SimpleITK {@link Image}.
  *
- * @author Mark Hiner, Brian Northan
+ * @author Mark Hiner
+ * @author Brian Northan
  */
-@Plugin(type = Converter.class, priority = Priority.LOW_PRIORITY)
-public class ItkImageDatasetConverter extends
-	AbstractConverter<Dataset, Image>
-{
+@Plugin(type = PreprocessorPlugin.class, priority = Priority.VERY_HIGH_PRIORITY)
+public class SimpleITKImagePreprocessor extends SingleInputPreprocessor<Image> {
 
-	@Parameter
-	private ImageJItkService ijitkService;
+	@Parameter(required = false)
+	private ImageDisplayService imageDisplayService;
 
-	@Parameter
-	private ObjectService objectService;
+	@Parameter(required = false)
+	private SimpleITKService simpleITKService;
 
-	// -- Converter methods --
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public <T> T convert(final Object src, final Class<T> dest) {
-		return (T) ijitkService.getImage((Dataset) src);
+	public SimpleITKImagePreprocessor() {
+		super(Image.class);
 	}
 
 	@Override
-	public Class<Image> getOutputType() {
-		return Image.class;
+	public Image getValue() {
+		if (imageDisplayService == null || simpleITKService == null) return null;
+		final Dataset activeDataset = imageDisplayService.getActiveDataset();
+		final Image image = null;
+
+		if (activeDataset != null) {
+			// Convert the active dataset to a SimpleItk-compatible array.
+			return simpleITKService.getImage(activeDataset);
+		}
+
+		return image;
 	}
 
-	@Override
-	public Class<Dataset> getInputType() {
-		return Dataset.class;
-	}
 }

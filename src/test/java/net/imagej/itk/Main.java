@@ -31,29 +31,16 @@
 
 package net.imagej.itk;
 
-import org.itk.simple.Image;
-import net.imagej.Dataset;
-import net.imagej.ImageJService;
-
-import org.scijava.service.Service;
-
 /**
- * {@link Service} for performing utility operations with {@code net.imagej}
- * data structures in a SimpleItk context.
- *
- * @author Mark Hiner, Brian Northan
+ * Launch ImageJ for debugging.
+ * 
+ * @author Brian Northan
  */
-public interface ImageJItkService extends ImageJService {
+public class Main {
 
-	/**
-	 * Converts a {@link Dataset} to a {@link SimpleItkNumericArray} which can
-	 * then be safely passed to SimpleItk.
-	 */
-		Image getImage(Dataset dataset);
+	/** Launches ImageJ for debugging. */
+	public static void main(final String... args) throws Exception {
+		net.imagej.Main.launch(args);
+	}
 
-	/**
-	 * Converts a {@link SimpleItkNumericArray} retrieved from SimpleItk to an
-	 * {@link Dataset}.
-	 */
-		Dataset getDataset(Image image);
 }

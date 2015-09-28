@@ -29,49 +29,49 @@
  * #L%
  */
 
-package net.imagej.itk;
+package net.imagej.itk.ops;
+
+import net.imagej.ops.Op;
+import net.imglib2.type.numeric.RealType;
 
 import org.itk.simple.Image;
+import org.scijava.ItemIO;
 import org.scijava.Priority;
-import org.scijava.convert.AbstractConverter;
-import org.scijava.convert.Converter;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
-import net.imagej.Dataset;
-import net.imagej.DatasetService;
-import net.imagej.itk.ImageJItkService;
-
 /**
- * {@link Converter} implementation for converting {@link Image} to
- * {@link Dataset}.
+ * An op that wraps the itk implementation of Recursive Gaussian Filter
+ *
+ * @author Brian Northan
+ * @param <T>
+ * @param <S>
  */
-@Plugin(type = Converter.class, priority = Priority.LOW_PRIORITY)
-public class DatasetItkImageConverter extends
-	AbstractConverter<Image, Dataset>
+@Plugin(type = RecursiveGaussian.class, name = RecursiveGaussian.NAME,
+	priority = Priority.HIGH_PRIORITY + 1)
+public class RecursiveGaussianImageOp<T extends RealType<T>, S extends RealType<S>>
+	implements Op
 {
 
 	@Parameter
-	private ImageJItkService ijitkService;
+	protected Image itkImage;
 
 	@Parameter
-	DatasetService datasetService;
+	protected float sigma = 3.0f;
 
-	// -- Converter methods --
+	@Parameter(type = ItemIO.OUTPUT, required = false)
+	protected Image output;
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public <T> T convert(final Object src, final Class<T> dest) {
-		return (T) ijitkService.getDataset((Image) src);
-	}
+	org.itk.simple.RecursiveGaussianImageFilter itkGauss;
 
 	@Override
-	public Class<Dataset> getOutputType() {
-		return Dataset.class;
-	}
+	public void run() {
 
-	@Override
-	public Class<Image> getInputType() {
-		return Image.class;
+		final org.itk.simple.SmoothingRecursiveGaussianImageFilter itkGauss =
+			new org.itk.simple.SmoothingRecursiveGaussianImageFilter();
+
+		// call itk rl using simple itk wrapper
+		output = itkGauss.execute(itkImage, sigma, false);
+
 	}
 }

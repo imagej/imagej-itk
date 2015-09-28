@@ -29,21 +29,27 @@
  * #L%
  */
 
-package net.imagej.itk.ops;
+package net.imagej.itk;
 
-import net.imagej.ops.Op;
+import net.imagej.Dataset;
+import net.imagej.ImageJService;
+
+import org.itk.simple.Image;
+import org.scijava.service.Service;
 
 /**
- * Base interface for "recursiveGaussian" operations.
- * <p>
- * Implementing classes should be annotated with:
- * </p>
+ * {@link Service} for performing utility operations with {@code net.imagej}
+ * data structures in a SimpleItk context.
  *
- * <pre>
- * &#64;Plugin(type = RecursiveGaussian.class, name = RecursiveGaussian.NAME)
- * </pre>
+ * @author Mark Hiner
+ * @author Brian Northan
  */
-public interface RecursiveGaussian extends Op {
+public interface SimpleITKService extends ImageJService {
 
-	String NAME = "filter.recursiveGaussian";
+	/** Converts a {@link Dataset} to a SimpleITK {@link Image}. */
+	Image getImage(Dataset dataset);
+
+	/** Converts a SimpleITK {@link Image} to a {@link Dataset}. */
+	Dataset getDataset(Image image);
+
 }

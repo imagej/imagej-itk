@@ -29,21 +29,59 @@
  * #L%
  */
 
-package net.imagej.itk.ops;
+package net.imagej.itk.commands;
 
-import net.imagej.ops.Op;
+import net.imagej.Dataset;
+import net.imagej.DatasetService;
+import net.imagej.itk.SimpleITKService;
+import net.imagej.itk.ops.RecursiveGaussian;
+import net.imagej.ops.OpService;
+import net.imglib2.type.NativeType;
+import net.imglib2.type.numeric.RealType;
+
+import org.itk.simple.Image;
+import org.scijava.ItemIO;
+import org.scijava.command.Command;
+import org.scijava.plugin.Parameter;
+import org.scijava.plugin.Plugin;
 
 /**
- * Base interface for "recursiveGaussian" operations.
- * <p>
- * Implementing classes should be annotated with:
- * </p>
+ * A command with parameters and a menu item. The command will be added to the
+ * ImageJ menu (under "Plugins", "ITK").
  *
- * <pre>
- * &#64;Plugin(type = RecursiveGaussian.class, name = RecursiveGaussian.NAME)
- * </pre>
+ * @author Brian Northan
+ * @param <T>
  */
-public interface RecursiveGaussian extends Op {
+@Plugin(type = Command.class, menuPath = "Plugins>ITK>ITK Gaussian")
+public class RecursiveGaussianImageCommand<T extends RealType<T> & NativeType<T>>
+	implements Command
+{
 
-	String NAME = "filter.recursiveGaussian";
+	@Parameter
+	private SimpleITKService simpleITKService;
+
+	@Parameter
+	protected DatasetService data;
+
+	@Parameter
+	protected OpService ops;
+
+	@Parameter
+	protected Image input;
+
+	@Parameter
+	protected float sigma = 3.0f;
+
+	@Parameter(type = ItemIO.OUTPUT)
+	protected Dataset output;
+
+	@Override
+	public void run() {
+
+		// call the op
+		final Image image = (Image) ops.run(RecursiveGaussian.NAME, input, sigma);
+
+		output = simpleITKService.getDataset(image);
+	}
+
 }

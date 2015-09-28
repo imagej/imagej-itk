@@ -29,21 +29,52 @@
  * #L%
  */
 
-package net.imagej.itk.ops;
+package net.imagej.itk.convert;
 
-import net.imagej.ops.Op;
+import net.imagej.Dataset;
+import net.imagej.itk.SimpleITKService;
+
+import org.itk.simple.Image;
+import org.scijava.Priority;
+import org.scijava.convert.AbstractConverter;
+import org.scijava.convert.Converter;
+import org.scijava.object.ObjectService;
+import org.scijava.plugin.Parameter;
+import org.scijava.plugin.Plugin;
 
 /**
- * Base interface for "recursiveGaussian" operations.
- * <p>
- * Implementing classes should be annotated with:
- * </p>
+ * {@link Converter} implementation for converting {@link Dataset} to SimpleITK
+ * {@link Image}.
  *
- * <pre>
- * &#64;Plugin(type = RecursiveGaussian.class, name = RecursiveGaussian.NAME)
- * </pre>
+ * @author Mark Hiner
+ * @author Brian Northan
  */
-public interface RecursiveGaussian extends Op {
+@Plugin(type = Converter.class, priority = Priority.LOW_PRIORITY)
+public class SimpleITKImageDatasetConverter extends
+	AbstractConverter<Dataset, Image>
+{
 
-	String NAME = "filter.recursiveGaussian";
+	@Parameter
+	private SimpleITKService simpleITKService;
+
+	@Parameter
+	private ObjectService objectService;
+
+	// -- Converter methods --
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> T convert(final Object src, final Class<T> dest) {
+		return (T) simpleITKService.getImage((Dataset) src);
+	}
+
+	@Override
+	public Class<Image> getOutputType() {
+		return Image.class;
+	}
+
+	@Override
+	public Class<Dataset> getInputType() {
+		return Dataset.class;
+	}
 }

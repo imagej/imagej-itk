@@ -29,51 +29,49 @@
  * #L%
  */
 
-package net.imagej.itk;
+package net.imagej.itk.convert;
+
+import net.imagej.Dataset;
+import net.imagej.DatasetService;
+import net.imagej.itk.SimpleITKService;
 
 import org.itk.simple.Image;
 import org.scijava.Priority;
-import org.scijava.module.process.PreprocessorPlugin;
+import org.scijava.convert.AbstractConverter;
+import org.scijava.convert.Converter;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
-import net.imagej.Dataset;
-import net.imagej.display.ImageDisplayService;
-import net.imagej.display.process.SingleInputPreprocessor;
-
 /**
- * {@link PreprocessorPlugin} implementation that converts the active
- * {@link Dataset}s to a {@link SimpleItkNumericArray}.
- *
- * @author Mark Hiner, Brian Northan
+ * {@link Converter} implementation for converting {@link Image} to
+ * {@link Dataset}.
  */
-@Plugin(type = PreprocessorPlugin.class, priority = Priority.VERY_HIGH_PRIORITY)
-public class ItkNumericArrayPreprocessor extends
-	SingleInputPreprocessor<Image>
+@Plugin(type = Converter.class, priority = Priority.LOW_PRIORITY)
+public class DatasetSimpleITKImageConverter extends
+	AbstractConverter<Image, Dataset>
 {
 
-	@Parameter(required = false)
-	private ImageDisplayService imageDisplayService;
+	@Parameter
+	private SimpleITKService simpleITKService;
 
-	@Parameter(required = false)
-	private ImageJItkService ijitkService;
+	@Parameter
+	DatasetService datasetService;
 
-	public ItkNumericArrayPreprocessor() {
-		super(Image.class);
+	// -- Converter methods --
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> T convert(final Object src, final Class<T> dest) {
+		return (T) simpleITKService.getDataset((Image) src);
 	}
 
 	@Override
-	public Image getValue() {
-		if (imageDisplayService == null || ijitkService == null) return null;
-		final Dataset activeDataset = imageDisplayService.getActiveDataset();
-		Image image = null;
-
-		if (activeDataset != null) {
-			// Convert the active dataset to a SimpleItk-compatible array.
-			return ijitkService.getImage(activeDataset);
-		}
-
-		return image;
+	public Class<Dataset> getOutputType() {
+		return Dataset.class;
 	}
 
+	@Override
+	public Class<Image> getInputType() {
+		return Image.class;
+	}
 }
