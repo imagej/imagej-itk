@@ -1,22 +1,19 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  
+	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>net.imagej</groupId>
 		<artifactId>pom-imagej</artifactId>
 		<version>11.3.0</version>
 		<relativePath />
 	</parent>
-  
-	<artifactId>imagej-itk</artifactId>
-	<packaging>jar</packaging>
-	<name>imagej-itk</name>
-	<version>0.1.1-SNAPSHOT</version>
 
-	<properties>
-		<simpleitk.version>0.9.0</simpleitk.version>
-	</properties>
+	<artifactId>imagej-itk</artifactId>
+	<version>0.1.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>imagej-itk</name>
 
 	<scm>
 		<connection>scm:git:git://github.com/imagej/imagej-itk</connection>
@@ -24,44 +21,45 @@
 		<tag>HEAD</tag>
 		<url>https://github.com/imagej/imagej-itk</url>
 	</scm>
-
 	<issueManagement>
 		<system>GitHub Issues</system>
 		<url>https://github.com/imagej/imagej-itk/issues</url>
 	</issueManagement>
-
 	<ciManagement>
 		<system>Jenkins</system>
 		<url>http://jenkins.imagej.net/job/ImageJ-ITK/</url>
 	</ciManagement>
-  
-	<dependencies>
- 	
-		<dependency>
-			<groupId>net.imagej</groupId>
-			<artifactId>imagej</artifactId>
-		</dependency>
 
-		<dependency>
- 			<groupId>org.itk.simple</groupId>
-			<artifactId>simpleitk</artifactId>
-			<version>${simpleitk.version}</version>
-		</dependency>
-	
-	<!-- Testing scope -->
-	
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
- 
+	<properties>
+		<simpleitk.version>0.9.0</simpleitk.version>
+	</properties>
+
 	<repositories>
 		<repository>
 			<id>imagej.public</id>
 			<url>http://maven.imagej.net/content/groups/public</url>
 		</repository>
 	</repositories>
-</project>
 
+	<dependencies>
+
+		<dependency>
+			<groupId>net.imagej</groupId>
+			<artifactId>imagej</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.itk.simple</groupId>
+			<artifactId>simpleitk</artifactId>
+			<version>${simpleitk.version}</version>
+		</dependency>
+
+		<!-- Testing scope -->
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
