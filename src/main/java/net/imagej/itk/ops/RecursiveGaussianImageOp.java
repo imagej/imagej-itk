@@ -31,7 +31,7 @@
 
 package net.imagej.itk.ops;
 
-import net.imagej.ops.Op;
+import net.imagej.ops.AbstractOp;
 import net.imglib2.type.numeric.RealType;
 
 import org.itk.simple.Image;
@@ -50,7 +50,7 @@ import org.scijava.plugin.Plugin;
 @Plugin(type = RecursiveGaussian.class, name = RecursiveGaussian.NAME,
 	priority = Priority.HIGH_PRIORITY + 1)
 public class RecursiveGaussianImageOp<T extends RealType<T>, S extends RealType<S>>
-	implements Op
+	extends AbstractOp
 {
 
 	@Parameter
