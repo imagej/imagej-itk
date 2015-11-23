@@ -12,7 +12,10 @@
 	<artifactId>imagej-itk</artifactId>
 	<version>0.1.1-SNAPSHOT</version>
 
-	<name>imagej-itk</name>
+	<name>ImageJ-ITK</name>
+	<description>Integration layer which connects ImageJ and ITK.</description>
+	<url>http://imagej.net/ITK</url>
+	<inceptionYear>2015</inceptionYear>
 
 	<scm>
 		<connection>scm:git:git://github.com/imagej/imagej-itk</connection>
