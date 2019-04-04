@@ -15,11 +15,11 @@
 
 	<name>ImageJ-ITK</name>
 	<description>Integration layer which connects ImageJ and ITK.</description>
-	<url>http://imagej.net/ITK</url>
+	<url>https://imagej.net/ITK</url>
 	<inceptionYear>2015</inceptionYear>
 	<organization>
 		<name>ImageJ</name>
-		<url>http://imagej.net/</url>
+		<url>https://imagej.net/</url>
 	</organization>
 	<licenses>
 		<license>
@@ -32,7 +32,7 @@
 		<developer>
 			<id>thewtex</id>
 			<name>Matt McCormick</name>
-			<url>http://imagej.net/User:Matt.mccormick</url>
+			<url>https://imagej.net/User:Matt.mccormick</url>
 			<roles>
 				<role>founder</role>
 				<role>lead</role>
@@ -45,7 +45,7 @@
 		<developer>
 			<id>ctrueden</id>
 			<name>Curtis Rueden</name>
-			<url>http://imagej.net/User:Rueden</url>
+			<url>https://imagej.net/User:Rueden</url>
 			<roles>
 				<role>lead</role>
 				<role>developer</role>
@@ -58,7 +58,7 @@
 		<developer>
 			<id>bnorthan</id>
 			<name>Brian Northan</name>
-			<url>http://imagej.net/User:Bnorthan</url>
+			<url>https://imagej.net/User:Bnorthan</url>
 			<roles>
 				<role>founder</role>
 				<role>debugger</role>
@@ -69,7 +69,7 @@
 	<contributors>
 		<contributor>
 			<name>Mark Hiner</name>
-			<url>http://imagej.net/User:Hinerm</url>
+			<url>https://imagej.net/User:Hinerm</url>
 			<roles><role>founder</role></roles>
 			<properties><id>hinerm</id></properties>
 		</contributor>
@@ -78,7 +78,7 @@
 	<mailingLists>
 		<mailingList>
 			<name>Image.sc Forum</name>
-			<archive>https://forum.image.sc/</archive>
+			<archive>https://forum.image.sc/tags/imagej</archive>
 		</mailingList>
 	</mailingLists>
 
@@ -116,7 +116,7 @@ Institute of Molecular Cell Biology and Genetics.</license.copyrightOwners>
 	<repositories>
 		<repository>
 			<id>imagej.public</id>
-			<url>http://maven.imagej.net/content/groups/public</url>
+			<url>https://maven.imagej.net/content/groups/public</url>
 		</repository>
 	</repositories>
 
