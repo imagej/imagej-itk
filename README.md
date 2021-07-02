@@ -1,3 +1,5 @@
+[![](https://github.com/imagej/imagej-itk/actions/workflows/build-main.yml/badge.svg)](https://github.com/imagej/imagej-itk/actions/workflows/build-main.yml)
+
 # imagej-itk
 
 This is a work in progress repository that demostrates how to expose [Insight

@@ -93,8 +93,8 @@
 		<url>https://github.com/imagej/imagej-itk/issues</url>
 	</issueManagement>
 	<ciManagement>
-		<system>Travis CI</system>
-		<url>https://travis-ci.org/imagej/imagej-itk</url>
+		<system>GitHub Actions</system>
+		<url>https://github.com/imagej/imagej-itk/actions</url>
 	</ciManagement>
 
 	<properties>
@@ -108,7 +108,7 @@ Institute of Molecular Cell Biology and Genetics.</license.copyrightOwners>
 		<license.excludes>**/script_templates/**</license.excludes>
 
 		<!-- NB: Deploy releases to the SciJava Maven repository. -->
-		<releaseProfiles>deploy-to-scijava</releaseProfiles>
+		<releaseProfiles>sign,deploy-to-scijava</releaseProfiles>
 
 		<simpleitk.version>0.9.0</simpleitk.version>
 	</properties>
