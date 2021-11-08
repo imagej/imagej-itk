@@ -83,7 +83,7 @@
 	</mailingLists>
 
 	<scm>
-		<connection>scm:git:git://github.com/imagej/imagej-itk</connection>
+		<connection>scm:git:https://github.com/imagej/imagej-itk</connection>
 		<developerConnection>scm:git:git@github.com:imagej/imagej-itk</developerConnection>
 		<tag>HEAD</tag>
 		<url>https://github.com/imagej/imagej-itk</url>
